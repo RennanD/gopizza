@@ -7,6 +7,9 @@ import { useFonts, DMSans_400Regular } from '@expo-google-fonts/dm-sans';
 import { DMSerifDisplay_400Regular } from '@expo-google-fonts/dm-serif-display';
 
 import { SingIn } from '@screens/SingIn';
+import { ThemeProvider } from 'styled-components/native';
+
+import theme from './src/styles/theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,8 +31,10 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <SingIn />
-    </View>
+    <ThemeProvider theme={theme}>
+      <View style={styles.container}>
+        <SingIn />
+      </View>
+    </ThemeProvider>
   );
 }
