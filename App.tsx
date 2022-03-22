@@ -9,6 +9,7 @@ import { DMSerifDisplay_400Regular } from '@expo-google-fonts/dm-serif-display';
 import { SingIn } from '@screens/SingIn';
 import { ThemeProvider } from 'styled-components/native';
 
+import { AppProvider } from '@hooks/index';
 import theme from './src/styles/theme';
 
 export default function App() {
@@ -28,7 +29,9 @@ export default function App() {
         barStyle="light-content"
         backgroundColor="transparent"
       />
-      <SingIn />
+      <AppProvider>
+        <SingIn />
+      </AppProvider>
     </ThemeProvider>
   );
 }

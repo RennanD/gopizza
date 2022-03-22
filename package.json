@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "native:start": "npx react-native start",
+    "native:android": "npx react-native run-android",
+    "native:ios": "npx react-native run-ios",
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
