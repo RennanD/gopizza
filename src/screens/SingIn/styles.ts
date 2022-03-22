@@ -1,6 +1,49 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 import { LinearGradient } from 'expo-linear-gradient';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
+
+export const Content = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: {
+    paddingBottom: getBottomSpace() + 48,
+  },
+})`
+  width: 100%;
+  padding: 0 32px;
+`;
+
+export const Title = styled.Text`
+  font-size: 32px;
+  margin-bottom: 24px;
+  align-self: flex-start;
+
+  ${({ theme }) => css`
+    font-family: ${theme.FONTS.TITLE};
+    color: ${theme.COLORS.TITLE};
+  `}
+`;
+
+export const BrandImage = styled.Image.attrs({ resizeMode: 'contain' })`
+  height: 240px;
+  margin-top: 64px;
+  margin-bottom: 32px;
+  align-self: center;
+`;
+
+export const ForgotPasswordButton = styled.TouchableOpacity`
+  align-self: flex-end;
+  margin-bottom: 20px;
+`;
+
+export const ForgotPasswordLabel = styled.Text`
+  font-size: 14px;
+
+  ${({ theme }) => css`
+    font-family: ${theme.FONTS.TEXT};
+    color: ${theme.COLORS.TITLE};
+  `}
+`;
 
 export const Container = styled(LinearGradient).attrs(({ theme }) => ({
   colors: theme.COLORS.GRADIENT,
@@ -8,5 +51,5 @@ export const Container = styled(LinearGradient).attrs(({ theme }) => ({
   end: { x: 0.5, y: 0.5 },
 }))`
   flex: 1;
-  padding: 20px;
+  justify-content: center;
 `;
