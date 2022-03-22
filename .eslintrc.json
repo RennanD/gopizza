@@ -31,6 +31,8 @@
     "react-hooks/exhaustive-deps": "warn",
     "import/prefer-default-export": "off",
     "@typescript-eslint/no-empty-interface": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
     "camelcase": "off",
     "react/jsx-filename-extension": [
       1,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StatusBar } from 'react-native';
 
 import AppLoading from 'expo-app-loading';
 
@@ -10,15 +10,6 @@ import { SingIn } from '@screens/SingIn';
 import { ThemeProvider } from 'styled-components/native';
 
 import theme from './src/styles/theme';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default function App() {
   const [fonstLoaded] = useFonts({
@@ -32,9 +23,12 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <View style={styles.container}>
-        <SingIn />
-      </View>
+      <StatusBar
+        translucent
+        barStyle="light-content"
+        backgroundColor="transparent"
+      />
+      <SingIn />
     </ThemeProvider>
   );
 }
