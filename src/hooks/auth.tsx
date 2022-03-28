@@ -22,6 +22,7 @@ type AuthContextData = {
   user: User;
   singIn: (data: SignInData) => Promise<void>;
   singOut: () => Promise<void>;
+  forgotPassword: (email: string) => Promise<void>;
 };
 
 type AuthProviderProps = {
@@ -87,9 +88,29 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setUser({} as User);
   }
 
+  async function handleForgotPassword(email: string) {
+    auth()
+      .sendPasswordResetEmail(email)
+      .then(() =>
+        Alert.alert('Redefinir Senha', 'Enviamos um link para seu e-mail'),
+      )
+      .catch(() =>
+        Alert.alert(
+          'Redefinir Senha',
+          'Não foi possível enviar o e-mail de redefinição de senha',
+        ),
+      );
+  }
+
   return (
     <AuthContext.Provider
-      value={{ isLogging, singIn: handleSignIn, singOut: handleSignOut, user }}
+      value={{
+        isLogging,
+        forgotPassword: handleForgotPassword,
+        singIn: handleSignIn,
+        singOut: handleSignOut,
+        user,
+      }}
     >
       {children}
     </AuthContext.Provider>

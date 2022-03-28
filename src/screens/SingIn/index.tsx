@@ -20,7 +20,7 @@ export function SingIn(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { singIn, isLogging } = useAuth();
+  const { singIn, isLogging, forgotPassword } = useAuth();
 
   async function handleSignIn() {
     if (!email) {
@@ -34,9 +34,18 @@ export function SingIn(): JSX.Element {
 
     try {
       await singIn({ email, password });
+      await forgotPassword(email);
     } catch (error) {
       Alert.alert('Login', error.message);
     }
+  }
+
+  async function handleForgotPassword() {
+    if (!email) {
+      Alert.alert('Login', 'Preencha o e-mail');
+      return;
+    }
+    await forgotPassword(email);
   }
 
   return (
@@ -66,7 +75,7 @@ export function SingIn(): JSX.Element {
             autoCorrect={false}
           />
 
-          <ForgotPasswordButton>
+          <ForgotPasswordButton onPress={() => handleForgotPassword()}>
             <ForgotPasswordLabel>Esqueci minha senha</ForgotPasswordLabel>
           </ForgotPasswordButton>
 
