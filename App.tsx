@@ -6,6 +6,8 @@ import AppLoading from 'expo-app-loading';
 import { useFonts, DMSans_400Regular } from '@expo-google-fonts/dm-sans';
 import { DMSerifDisplay_400Regular } from '@expo-google-fonts/dm-serif-display';
 
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
 import { SingIn } from '@screens/SingIn';
 import { ThemeProvider } from 'styled-components/native';
 
@@ -30,7 +32,9 @@ export default function App() {
         backgroundColor="transparent"
       />
       <AppProvider>
-        <SingIn />
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <SingIn />
+        </GestureHandlerRootView>
       </AppProvider>
     </ThemeProvider>
   );
