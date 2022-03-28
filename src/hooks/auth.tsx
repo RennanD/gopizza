@@ -18,9 +18,10 @@ type User = {
 };
 
 type AuthContextData = {
-  singIn: (data: SignInData) => Promise<void>;
   isLogging: boolean;
   user: User;
+  singIn: (data: SignInData) => Promise<void>;
+  singOut: () => Promise<void>;
 };
 
 type AuthProviderProps = {
@@ -81,8 +82,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
       });
   }
 
+  async function handleSignOut() {
+    await auth().signOut();
+    setUser({} as User);
+  }
+
   return (
-    <AuthContext.Provider value={{ isLogging, singIn: handleSignIn, user }}>
+    <AuthContext.Provider
+      value={{ isLogging, singIn: handleSignIn, singOut: handleSignOut, user }}
+    >
       {children}
     </AuthContext.Provider>
   );

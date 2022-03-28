@@ -21,7 +21,8 @@ export function usePersistedState<T = unknown>(
       setState(storaged ? JSON.parse(storaged) : initialState);
     }
     loadingState();
-  }, [initialState, key]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     async function setData() {

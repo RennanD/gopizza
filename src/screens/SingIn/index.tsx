@@ -35,7 +35,6 @@ export function SingIn(): JSX.Element {
     try {
       await singIn({ email, password });
     } catch (error) {
-      console.log(error);
       Alert.alert('Login', error.message);
     }
   }
