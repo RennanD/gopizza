@@ -8,8 +8,10 @@ import { DMSerifDisplay_400Regular } from '@expo-google-fonts/dm-serif-display';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { SingIn } from '@screens/SingIn';
 import { ThemeProvider } from 'styled-components/native';
+
+import { SingIn } from '@screens/SingIn';
+import { Product } from '@screens/Product';
 
 import { AppProvider } from '@hooks/index';
 import theme from './src/styles/theme';
@@ -33,7 +35,8 @@ export default function App() {
       />
       <AppProvider>
         <GestureHandlerRootView style={{ flex: 1 }}>
-          <SingIn />
+          {/* <SingIn /> */}
+          <Product />
         </GestureHandlerRootView>
       </AppProvider>
     </ThemeProvider>
